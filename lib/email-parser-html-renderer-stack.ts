@@ -15,22 +15,22 @@ export class EmailParserHtmlRendererStack extends cdk.Stack {
 
     const { S3_BUCKET_NAME, S3_BUCKET_ARN } = props
 
-    const chromeAwsLayer = new LayerVersion(this, `Chrome AWS Layer`, {
-      layerVersionName: `visma-email-parser-chrome-aws-lambda`,
-      code: Code.fromAsset('layer/chrome/chrome_aws_lambda.zip'),
+    const chromeAwsLayer = new LayerVersion(this, `Chrome layer`, {
+      layerVersionName: `chrome-layer`,
+      code: Code.fromAsset('layers/chrome/chrome_aws_lambda.zip'),
       compatibleRuntimes: [Runtime.NODEJS_20_X],
       description: 'Headless Chrome with puppeteer',
     })
 
     const dependenciesLayer = new LayerVersion(this, 'Node.js dependencies layer', {
-      layerVersionName: `visma-email-parser-dependency`,
-      code: Code.fromAsset('layer/dependencies/node_dependencies.zip'),
+      layerVersionName: `node-dependencies-layer`,
+      code: Code.fromAsset('layers/dependencies/node_dependencies.zip'),
       compatibleRuntimes: [Runtime.NODEJS_20_X],
-      description: 'A layer containing Node.js modules',
+      description: 'Layer containing Node.js modules',
     });
 
     const rendererLambda = new cdk.aws_lambda.Function(this, `Renderer lambda`, {
-      functionName: 'visma-email-parser-html-renderer-lambda',
+      functionName: 'email-parser-html-renderer-lambda',
       code: Code.fromAsset('lambda'),
       handler: 'lambda.handler',
       runtime: Runtime.NODEJS_20_X,

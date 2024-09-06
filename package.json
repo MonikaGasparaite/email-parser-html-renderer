@@ -8,7 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "build-layers": "cd layers/dependencies/nodejs && npm install && cd ../ && zip -r node_dependencies.zip nodejs && cd ../../"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
