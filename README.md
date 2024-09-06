@@ -1,4 +1,4 @@
-### Deploy lambda function to AWS
+### Deploy lambda function to AWS:
 
 * `npm install`
 * `npm run build-layers`
