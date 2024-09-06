@@ -1,6 +1,6 @@
 const chromium = require('@sparticuz/chromium')
 const puppeteer = require('puppeteer-core')
-const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36WAIT_UNTIL=load";
+const randomUserAgent = require('random-useragent');
 
 let browser: any
 
@@ -23,7 +23,7 @@ export const render = async ({html, pdf = false}: { html: string, pdf: boolean }
   }
 
   const page = await browser.newPage();
-  page.setUserAgent(USER_AGENT);
+  page.setUserAgent(randomUserAgent.getRandom());
 
   await page.setJavaScriptEnabled(false);
   await page.reload();
