@@ -1,5 +1,7 @@
 ### Deploy lambda function to AWS:
 
+Use node v20
+
 * `npm install`
 * `npm run build-layers`
 * `npm run build`
