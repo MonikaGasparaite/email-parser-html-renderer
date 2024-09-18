@@ -23,7 +23,10 @@ export const render = async ({html, pdf = false}: { html: string, pdf: boolean }
   }
 
   const page = await browser.newPage();
-  page.setUserAgent(randomUserAgent.getRandom());
+  let userAgent = randomUserAgent.getRandom(function (ua: any) {
+    return ua.browserName === 'Chrome';
+  });
+  page.setUserAgent(userAgent);
 
   await page.setJavaScriptEnabled(false);
   await page.reload();
