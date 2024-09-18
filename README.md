@@ -12,4 +12,4 @@ Use node v20
 
 ### Call lambda function:
 
-`aws lambda invoke --function-name email-parser-html-renderer-lambda --payload '{"contentS3Key": "test-email.html", "outputS3Key": "generated-email", "pdf": true}' /dev/stdout`
+`aws lambda invoke --function-name email-parser-html-renderer-lambda --payload '{"contentS3Key": "test-email.html", "outputS3Key": "generated-email.pdf", "pdf": true}' /dev/stdout`
